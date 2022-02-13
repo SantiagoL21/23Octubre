@@ -9,16 +9,24 @@ app.use(express.static("public_html"));
 
 var mysql = require('mysql');
 
+/*
 var con = mysql.createConnection({
     host: "localhost",
     user: "Santi", //el usuario que hay en el setup de mysql 
-    //user: 'admin_tesis',
     password: "1234",
-    //password: 'Tesis2022!',
     database: "pruebaabb"
-    //database: "admin_pruebaabb"
+
+});
+*/
+
+
+var con = mysql.createConnection({
+    host: "localhost",
+    user: 'admin_tesis',
+    password: 'Tesis2022!',
+    database: "admin_pruebaabb"
  
-    });
+});
 
 
 var flag_log = 0;  // flag 0 no entra a test, 1 si
