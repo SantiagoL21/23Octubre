@@ -9,7 +9,20 @@ app.use(express.static("public_html"));
 
 var mysql = require('mysql');
 
-/*
+
+
+//Configuramos sockets io
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+io.on('connection', (socket) => {
+    socket.on('chat message', msg => {
+      io.emit('chat message', msg);
+      console.log(msg);
+    });
+  });
+
+
+  /*
 var con = mysql.createConnection({
     host: "localhost",
     user: "Santi", //el usuario que hay en el setup de mysql 
@@ -17,8 +30,8 @@ var con = mysql.createConnection({
     database: "pruebaabb"
 
 });
-*/
 
+*/
 
 var con = mysql.createConnection({
     host: "localhost",
@@ -309,7 +322,7 @@ app.post("/datos3", function (request, response) {
 
 
 //Final del codigo
-app.listen(3000, function () {
+http.listen(3000, function () {
 
     console.log("Servidor Iniciado");
 
